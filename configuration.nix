@@ -110,6 +110,7 @@
     kdePackages.dolphin
     legcord
     quickemu
+    nestopia-ue
   ];
 
 
