@@ -110,7 +110,8 @@
     kdePackages.dolphin
     legcord
     quickemu
-    zsnes
+    gh
+    bulletty
   ];
 
 
