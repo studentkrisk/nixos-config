@@ -112,7 +112,7 @@
     unzip
     xdg-utils
     kdePackages.dolphin
-    legcord
+    discordo
     quickemu
     gh
     bulletty
