@@ -112,7 +112,6 @@
     unzip
     xdg-utils
     kdePackages.dolphin
-    discordo
     quickemu
     gh
     bulletty
