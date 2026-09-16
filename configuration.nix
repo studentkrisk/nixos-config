@@ -116,6 +116,7 @@
     gh
     bulletty
     obsidian
+    brillo
   ];
 
 
