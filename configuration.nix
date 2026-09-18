@@ -117,6 +117,9 @@
     bulletty
     obsidian
     brillo
+    python3
+    anki
+    fooyin
   ];
 
 
