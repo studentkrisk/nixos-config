@@ -11,6 +11,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+
   /*
   boot.kernelPackages = 
     let kernel = pkgs.linuxManualConfig {
@@ -120,6 +121,7 @@
     python3
     anki
     fooyin
+    lutris
   ];
 
 
