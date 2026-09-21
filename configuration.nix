@@ -105,13 +105,14 @@
 
 
   environment.systemPackages = with pkgs; [
-    vim
+    vim-full
     wget
     git
     alacritty
     fuzzel
     unzip
     xdg-utils
+    wl-clipboard
     kdePackages.dolphin
     quickemu
     gh
