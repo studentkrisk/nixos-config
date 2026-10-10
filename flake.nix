@@ -1,28 +1,42 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    nixos-hardware = {
+    home-manager = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+    };
+    nixos-hardware = { # need to update this
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:soopyc/nixos-hardware/9d1d3c914e2c951fbcad437d1faa9661af4ae44f";
     };
-    # niri-flake.url = "github:sodiboo/niri-flake";
+    niri-flake = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:sodiboo/niri-flake?ref=refs/pull/1853/head";
+    };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:noctalia-dev/noctalia";
+    };
   };
 
-  outputs = {self, nixpkgs, home-manager, nixos-hardware, ...}@inputs: {
-      nixosConfigurations.krisk = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          inputs.nixos-hardware.nixosModules.apple-t2
-          ./configuration.nix
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.krisk = ./home.nix;
-          }
-        ];
-      };
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }@inputs: {
+    nixosConfigurations.krisk = inputs.nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [
+        inputs.nixos-hardware.nixosModules.apple-t2
+        ./configuration.nix
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.users.krisk = ./home.nix;
+        }
+      ];
     };
+  };
 }
