@@ -118,7 +118,6 @@
       obsidian
       python3
       anki
-      fooyin
       lutris
       musescore
     ];

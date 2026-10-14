@@ -27,6 +27,7 @@
 - [ ] browser.tabs.insertAfterCurrentExceptPinned in about:config declaritively
 - [ ] sponsorblock settings
 - [ ] tabs
+- [ ] custom keyboard
 - [x] escape to caps lock
 - [x] load firefox backup
 - [x] niri start on boot
