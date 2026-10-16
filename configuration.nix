@@ -120,6 +120,7 @@
       anki
       lutris
       musescore
+      fooyin
     ];
 
 
