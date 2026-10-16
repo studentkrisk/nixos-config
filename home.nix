@@ -76,6 +76,7 @@
     settings = {
       input.touchpad.tap = false;
       input.touchpad.natural-scroll = true;
+      input.touchpad.accel-speed = 0.3;
       input.keyboard.xkb.options = "caps:escape";
       layout.default-column-width.proportion = 0.5;
       binds = {
