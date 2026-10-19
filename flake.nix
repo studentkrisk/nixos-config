@@ -31,7 +31,7 @@
         inputs.nixos-hardware.nixosModules.apple-t2
         ./configuration.nix
         home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
+          home-manager.useGlobalPkgs = false;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.krisk = ./home.nix;

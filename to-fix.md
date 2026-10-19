@@ -1,4 +1,3 @@
-- [ ] home manager
 - [ ] vim config in nix
 - [ ] move tap-to-click disable to nix
 - [ ] background + stylix
@@ -11,9 +10,7 @@
 - [ ] proton lutris
 - [ ] file manager
 - [ ] rss
-- [ ] add brcm to nix
 - [ ] new battery?
-- [ ] configure waybar
 - [ ] set -o vi
 - [ ] automatically open windows when startup
 - [ ] better obsidian, maybe vimtex?
@@ -28,6 +25,9 @@
 - [ ] sponsorblock settings
 - [ ] tabs
 - [ ] custom keyboard
+- [ ] hints vim keybinding type thing
+- [?] add brcm to nix
+- [x] home manager
 - [x] escape to caps lock
 - [x] load firefox backup
 - [x] niri start on boot

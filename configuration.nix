@@ -29,6 +29,12 @@
     }))
   ];
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = [ pkgs.intel-compute-runtime-legacy1 ];
+  };
+
   hardware.apple.touchBar = {
     enable = true;
     package = pkgs.tiny-dfr;
@@ -99,33 +105,7 @@
     extraGroups = [ "wheel" ];
   };
 
+  system.stateVersion = "26.11"; # do not change!!!
 
-  nixpkgs.config.allowUnfree = true; # =(
-
-
-    environment.systemPackages = with pkgs; [
-      vim-full
-      wget
-      git
-      fuzzel
-      unzip
-      xdg-utils
-      wl-clipboard
-      kdePackages.dolphin
-      quickemu
-      gh
-      bulletty
-      obsidian
-      python3
-      anki
-      lutris
-      musescore
-      fooyin
-    ];
-
-
-    system.stateVersion = "26.11"; # do not change!!!
-
-    programs.niri.enable = true;
-  }
-
+  programs.niri.enable = true;
+}

@@ -1,10 +1,19 @@
-{ config, pkgs, inputs, ... }: {
+{ config, pkgs, inputs, lib, ... }: {
   home = {
     username = "krisk";
     homeDirectory = "/home/krisk";
     stateVersion = "26.05"; # dont mess with
     packages = with pkgs; [
       brightnessctl
+      xwayland-satellite
+      wl-clipboard
+
+      python3
+      wget
+      quickemu
+
+      fooyin
+      musescore
     ];
   };
   programs.home-manager.enable = true;
@@ -81,8 +90,8 @@
       layout.default-column-width.proportion = 0.5;
       binds = {
         "Mod+Shift+Slash".action.show-hotkey-overlay = {};
-        "Mod+T".action.spawn = "kitty";
-        "Mod+D".action.spawn = "fuzzel";
+        "Mod+T".action.spawn-sh = "kitty -1";
+        "Mod+Space".action.spawn-sh = "vicinae open";
 
         "XF86AudioRaiseVolume" = {
           allow-when-locked = true;
@@ -147,16 +156,9 @@
     };
   };
 
-  programs.prismlauncher = {
+  programs.bluetuith = {
     enable = true;
   };
-
-  /*
-  programs.obs-studio = {
-    enable = true;
-    plugins = with pkgs.obs-studio-plugins; [ distroav ];
-  };
-  */
 
   services.redshift = {
     enable = true;
@@ -168,4 +170,165 @@
     dawnTime = "6:00-8:00";
     duskTime = "19:00-21:00";
   };
+
+  programs.git = {
+    enable = true;
+    settings = {
+      user.name = "studentkrisk";
+      user.email = "krishnaearth2@gmail.com";
+      core.editor = "vim";
+    };
+  };
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper.enable = true;
+    settings.editor = "vim";
+  };
+
+  programs.lutris.enable = true;
+
+  programs.anki.enable = true;
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "obsidian"
+  ];
+  programs.obsidian.enable = true;
+
+  programs.yazi.enable = true;
+
+  programs.vicinae = {
+    enable = true;
+    systemd = {
+      enable = true; # default: false
+      autoStart = true; # default: true (if systemd.enable is true)
+    };
+    settings.launcher_window.layer_shell.enabled = false;
+  };
+
+  programs.vim = {
+    enable = true;
+    defaultEditor = true;
+    # based on https://github.com/nvim-zh/minimal_vim/
+    extraConfig = ''
+      set encoding=utf-8
+      scriptencoding utf-8
+      language en_US.utf-8
+      filetype plugin indent on
+      set nocompatible
+
+      syntax on
+
+      set timeoutlen=500
+      set splitbelow splitright
+      set noswapfile
+
+      set number relativenumber
+
+      set fileencoding=utf-8
+      set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+
+      set linebreak
+      set showbreak=↪
+
+      set wildmode=list:full
+
+      set scrolloff=5
+
+      if has('mouse')
+        set mouse=nic  " Enable mouse in several mode
+        set mousemodel=popup  " Set the behaviour of mouse
+      endif
+
+      set ruler
+
+      set visualbell
+
+      set confirm
+
+      set title
+      set titlestring=
+      set titlestring+=%(%{hostname()}\ \ %)
+      set titlestring+=%(%{expand('%:p')}\ \ %)
+      set titlestring+=%{strftime('%Y-%m-%d\ %H:%M',getftime(expand('%')))}
+
+      set completeopt+=menuone  " Show menu even if there is only one item
+      set completeopt-=preview  " Disable the preview window
+
+      set pumheight=15  " Maximum number of items to show in popup menu
+      if exists('&pumblend')
+      set pumblend=5  " Pesudo blend effect for popup menu
+      endif
+
+      set complete+=k,kspell complete-=w complete-=b complete-=u complete-=t
+
+      set spelllang=en
+
+      set shiftround
+
+      set virtualedit=block
+
+      set formatoptions+=mM
+
+      set tildeop
+
+      set nojoinspaces
+
+      set wildmenu
+
+      " Whitespace
+      set wrap
+      set textwidth=0
+      set wrapmargin=0
+      set foldlevel=0
+      set formatoptions=tcqrn1
+      set tabstop=4
+      set shiftwidth=4
+      set softtabstop=4
+      set expandtab
+      set noshiftround
+
+      " Cursor motion
+      set scrolloff=3
+      set backspace=indent,eol,start
+      set matchpairs+=<:> " use % to jump between pairs
+      runtime! macros/matchit.vim
+
+      set hidden
+
+      " Rendering
+      set ttyfast
+
+      " Status bar
+      set laststatus=2
+
+      " Last line
+      set showmode
+      set showcmd
+
+      " Searching
+      nnoremap / /\v
+      vnoremap / /\v
+      set hlsearch
+      set incsearch
+      set ignorecase
+      set smartcase
+      set showmatch
+      map <leader><space> :let @/=\'\'<cr> " clear search
+      " Remap help key.
+      inoremap <F1> <ESC>:set invfullscreen<CR>a
+      nnoremap <F1> :set invfullscreen<CR>
+      vnoremap <F1> :set invfullscreen<CR>
+      " Textmate holdouts
+
+      " Color scheme (terminal)
+      set t_Co=256
+      set background=dark
+      let g:solarized_termcolors=256
+      let g:solarized_termtrans=1
+      " put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
+      " in ~/.vim/colors/ and uncomment:
+      " colorscheme solarized
+    '';
+  };
+
 }
