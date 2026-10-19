@@ -1,32 +1,31 @@
-- [ ] vim config in nix
-- [ ] move tap-to-click disable to nix
 - [ ] background + stylix
-- [ ] choose better terminal + fuzzel + etc.
-- [ ] scrollsens
-- [ ] touchbar
-- [ ] brightness
-- [ ] audio
-- [ ] pbcopy pbpaste
 - [ ] proton lutris
-- [ ] file manager
 - [ ] rss
 - [ ] new battery?
 - [ ] set -o vi
 - [ ] automatically open windows when startup
 - [ ] better obsidian, maybe vimtex?
-- [ ] neovim?
 - [ ] change EDITOR variable impertivaly
 - [ ] date time
 - [ ] install games
-- [ ] better mouse acel
 - [ ] fix sleep
 - [ ] automatic file backup
 - [ ] browser.tabs.insertAfterCurrentExceptPinned in about:config declaritively
 - [ ] sponsorblock settings
-- [ ] tabs
 - [ ] custom keyboard
 - [ ] hints vim keybinding type thing
+- [ ] fix firefox pdf downloads
 - [?] add brcm to nix
+- [x] touchbar
+- [x] brightness
+- [x] audio
+- [x] tabs
+- [x] pbcopy pbpaste
+- [x] better mouse acel
+- [x] choose better terminal + fuzzel + file manager + etc.
+- [x] scrollsens
+- [x] vim config in nix
+- [x] move tap-to-click disable to nix
 - [x] home manager
 - [x] escape to caps lock
 - [x] load firefox backup

@@ -9,8 +9,6 @@
       wl-clipboard
 
       python3
-      wget
-      quickemu
 
       fooyin
       musescore
@@ -23,7 +21,17 @@
     inputs.nix-index-database.homeModules.default
   ];
 
-  programs.firefox = {
+  programs.firefox = 
+  let
+    lock-true = {
+      Value = true;
+      Status = "locked";
+    };
+    lock-false = {
+      Value = false;
+      Status = "locked";
+    };
+  in {
     enable = true;
     languagePacks = [ "en-CA" ];
     policies = {
@@ -38,6 +46,13 @@
       BlockAboutSupport             = false;
       DisplayMenuBar                = "never";
       DontCheckDefaultBrowser       = true;
+      AIControls.Default = false;
+      AIControls.Translations = true;
+      Preferences = {
+        "browser.tabs.insertAfterCurrent" = lock-false;
+        "browser.tabs.insertAfterCurrentExceptPinned" = lock-true;
+        "browser.tabs.insertRelatedAfterCurrent" = lock-true;
+      };
 
       ExtensionSettings = let
         moz = short: "https://addons.mozilla.org/firefox/downloads/latest/${short}/latest.xpi";
@@ -71,6 +86,16 @@
           install_url       = moz "auto-tab-discard";
           installation_mode = "force_installed";
           updates_disabled  = true;
+        };
+        /* "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = {
+          install_url = moz "vimium-ff";
+          installation_mode = "force_installed";
+          updates_disabled = true;
+        }; */
+        "linkhints@lydell.github.io" = {
+          install_url = moz "linkhints";
+          installation_mode = "force_installed";
+          updates_disabled = true;
         };
       };
     };
