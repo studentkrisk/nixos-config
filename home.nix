@@ -220,6 +220,7 @@
   programs.obsidian.enable = true;
 
   programs.yazi.enable = true;
+  programs.dolphin.enable = true;
 
   programs.vicinae = {
     enable = true;
@@ -233,8 +234,14 @@
   programs.vim = {
     enable = true;
     defaultEditor = true;
+    plugins = with pkgs.vimPlugins; [ vimtex ];
     # based on https://github.com/nvim-zh/minimal_vim/
     extraConfig = ''
+      let g:tex_flavor='latex'
+      let g:vimtex_view_method='zathura'
+      let g:vimtex_quickfix_mode=0
+      set conceallevel=2
+
       set encoding=utf-8
       scriptencoding utf-8
       language en_US.utf-8

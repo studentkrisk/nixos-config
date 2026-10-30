@@ -15,6 +15,7 @@
 - [ ] custom keyboard
 - [ ] hints vim keybinding type thing
 - [ ] fix firefox pdf downloads
+- [ ] fix vimPlugins.vimtex not autoincluding latexmk from miktex
 - [?] add brcm to nix
 - [x] touchbar
 - [x] brightness
