@@ -11,7 +11,6 @@
       python3
 
       fooyin
-      musescore
     ];
   };
   programs.home-manager.enable = true;
@@ -20,6 +19,17 @@
     inputs.noctalia.homeModules.default
     inputs.nix-index-database.homeModules.default
   ];
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config.niri = {
+      default = [ "gtk" ];
+      "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+    };
+  };
 
   programs.firefox = 
   let
@@ -88,9 +98,9 @@
           updates_disabled  = true;
         };
         /* "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = {
-          install_url = moz "vimium-ff";
-          installation_mode = "force_installed";
-          updates_disabled = true;
+        install_url = moz "vimium-ff";
+        installation_mode = "force_installed";
+        updates_disabled = true;
         }; */
         "linkhints@lydell.github.io" = {
           install_url = moz "linkhints";
@@ -142,6 +152,7 @@
         "Mod+O".action.toggle-overview = {};
         "Mod+Q".action.close-window = {};
         "Mod+F".action.maximize-column = {};
+        "Mod+Shift+F".action.fullscreen-window = {};
         "Mod+P".action.screenshot = {};
         "Mod+Shift+P".action.power-off-monitors = {};
 
@@ -220,7 +231,6 @@
   programs.obsidian.enable = true;
 
   programs.yazi.enable = true;
-  programs.dolphin.enable = true;
 
   programs.vicinae = {
     enable = true;
