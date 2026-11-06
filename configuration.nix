@@ -92,7 +92,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${lib.getExe' pkgs.python3 "python3"} conwaygreet.py ${lib.getExe' pkgs.tuigreet "tuigreet"} --time --cmd niri-session";
+          command = "${lib.getExe' pkgs.python3 "python3"} ${./greet_conway.py} /var/lib/greet-conway/times.csv ${lib.getExe' pkgs.tuigreet "tuigreet"} --time --cmd niri-session";
           user = "greeter";
         };
       };

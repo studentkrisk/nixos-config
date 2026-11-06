@@ -16,6 +16,7 @@
 - [ ] hints vim keybinding type thing
 - [ ] fix firefox pdf downloads
 - [ ] fix vimPlugins.vimtex not autoincluding latexmk from miktex
+- [ ] write about conway
 - [?] add brcm to nix
 - [x] touchbar
 - [x] brightness
