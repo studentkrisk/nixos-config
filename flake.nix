@@ -17,10 +17,12 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    /*
     noctalia = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:noctalia-dev/noctalia";
     };
+    */
   };
 
   outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }@inputs: {

@@ -16,7 +16,6 @@
   programs.home-manager.enable = true;
 
   imports = [
-    inputs.noctalia.homeModules.default
     inputs.nix-index-database.homeModules.default
   ];
 
@@ -373,4 +372,20 @@
     '';
   };
 
+  programs.ssh = {
+    enable = true;
+    settings = {
+      "koi.ocf.io" = {
+        User = "studentkrisk";
+        IdentityFile = "~/.ssh/id_ed25519";
+        IdentitiesOnly = true;
+      };
+      "*.ocf.io !koi.ocf.io" = {
+        User = "studentkrisk";
+        ProxyJump = "koi.ocf.io";
+        IdentityFile = "~/.ssh/id_ed25519";
+        IdentitiesOnly = true;
+      };
+    };
+  };
 }

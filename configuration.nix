@@ -1,5 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 
+
 {
   imports = [
     ./hardware-configuration.nix 
@@ -8,8 +9,17 @@
 
   nix = {
     package = pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
-    settings.bash-prompt-suffix = " (nix shell)\\[ \\]";
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      bash-prompt-suffix = " (nix shell)\\[ \\]";
+      substituters = [
+        "https://cache.ocf.berkeley.edu"
+        "https://cache.nixos.org"
+      ];
+      trusted-public-keys = [
+        "cache.ocf.berkeley.edu-1:6n9lihkjExzagz8GYR1QY/ZthT/XAKOy+ju5Jxd6wBg="
+      ];
+    };
   };
 
 
